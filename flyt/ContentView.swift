@@ -7,20 +7,38 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ContentView : View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        ZStack(alignment: Alignment.top) {
+            MapView()
+            SlideOverCard {
+                VStack {
+                    HStack {
+                        Text("Flights")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                        Spacer()
+                    }
+                    Spacer()
+                }.padding()
+            }
         }
-        .padding()
+        .edgesIgnoringSafeArea(.vertical)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
+    
+    static var defaultContent : some View {
+        VStack {
+            Text("Maitland Bay").font(.headline)
+            Spacer()
+        }
+    }
+    
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView()
+        }
     }
 }
